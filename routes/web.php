@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('hello');
+    return view('hello', ['name' => "alif"]);
 });
 
 Route::get('/posts', function () {
