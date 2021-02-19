@@ -6,7 +6,7 @@
 
 @section('content')
 
-    welcome to posts
+    Welcome to Posts
 
 @endsection
 
