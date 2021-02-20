@@ -16,11 +16,20 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+use Illuminate\Support\Facades\Schema;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
-    return view('hello', ['name' => "alif"]);
-});
+    return view('hello');
+})->name('home');
 
 Route::get('/posts', function () {
     return view('posts.index');
-});
+})->name('posts');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);

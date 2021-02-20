@@ -6,7 +6,13 @@
 
 @section('content')
 
-    Welcome to Posts
+    <div class="flex justify-center">
+        <div class="w-8/12 bg-gray-700 p-6 rounded-lg">
+
+            Welcome to Posts  
+
+        </div>
+    </div>
 
 @endsection
 

@@ -13,13 +13,8 @@
 
     @yield('header')
 
-    <div class="flex justify-center">
-        <div class="w-8/12 bg-gray-700 p-6 rounded-lg">
 
-            @yield('content')      
-   
-        </div>
-    </div>
+    @yield('content')      
 
     
     @yield('footer')
