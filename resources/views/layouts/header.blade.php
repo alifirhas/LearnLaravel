@@ -4,7 +4,7 @@
             <a href="{{ route('home') }}" class="p-3 hover:text-purple-200">Home</a>
         </li>
         <li>
-            <a href="#" class="p-3  hover:text-purple-200">Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="p-3  hover:text-purple-200">Dashboard</a>
         </li>
         <li>
             <a href="{{ route('posts') }}" class="p-3  hover:text-purple-200">Posts</a>
@@ -12,17 +12,25 @@
     </ul>
 
     <ul class="flex items-center ">
+        @auth
         <li>
             <a href="#" class="p-3 hover:text-purple-200">ALif Irhas</a>
         </li>
         <li>
-            <a href="#" class="p-3  hover:text-purple-200">LogIn</a>
+            <form action="{{ route('logout') }}" method="POST" class="p-3 inline">
+                @csrf
+                <button type="submit">LogOut</button>
+            </form>
+        </li>
+        @endauth
+        
+        @guest
+        <li>
+            <a href="{{ route('login') }}" class="p-3  hover:text-purple-200">LogIn</a>
         </li>
         <li>
             <a href="{{ route('register') }}" class="p-3  hover:text-purple-200">Register</a>
         </li>
-        <li>
-            <a href="#  " class="p-3  hover:text-purple-200">LogOut</a>
-        </li>
+        @endguest
     </ul>
 </nav>
