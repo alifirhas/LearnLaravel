@@ -18,7 +18,7 @@ class RegisterController extends Controller
         
         //validasi
         $this->validate($request, [
-            'name' => 'required|max:10',
+            'name' => 'required|max:100',
             'username' => 'required|max:100',
             'email' => 'required|email|max:100',
             'password' => 'required|confirmed|max:15',
