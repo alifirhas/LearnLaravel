@@ -30,6 +30,9 @@ Route::get('/posts', function () {
     return view('posts.index');
 })->name('posts');
 
+//middleware easy way tapi tidak rapi
+// Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
