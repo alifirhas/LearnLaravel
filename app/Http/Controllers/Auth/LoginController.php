@@ -23,7 +23,9 @@ class LoginController extends Controller
         ]);
 
         //sign in user
-        if(!auth()->attempt($request->only('email', 'password'), $request->remember)){
+        $remember = $request->remember;
+        $credential = auth()->attempt($request->only('email', 'password'), $remember);
+        if(!$credential){
             return back()->with('status', 'invalid login details');
         }; 
 
