@@ -15,7 +15,7 @@
 
                 <div class="mb-4">
                     <label for="body" class="sr-only">Body</label>
-                    <textarea name="body" id="body" cols="" rows="4" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror" placeholder="Post something!"></textarea>
+                    <textarea name="body" id="body" cols="" rows="4" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror" placeholder="Post something!" autofocus></textarea>
 
                     @error('body')
                         <div class="text-red-500 mt-2 text-sm">
@@ -29,7 +29,23 @@
             </form>
             @endauth
             
+            <div class="my-4">
+                @if ($posts->count())
+                    
+                    @foreach ($posts as $post)
+                        <div class="mb-4">
+                            <a href="" class="font-bold">{{ $post->user->username }}</a> <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
+                            <p class="mb-2">{{ $post->body }}</p>
 
+                        </div>
+                    @endforeach
+                    
+                    {{ $posts->links() }}
+
+                @else
+                    <p>Masih belum ada post</p>
+                @endif
+            </div>
             
         </div>
     </div>
