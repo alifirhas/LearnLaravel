@@ -43,4 +43,18 @@ class PostController extends Controller
 
         return back();
     }
+
+    public function destroy(Request $request, Post $post){
+        // lanjutan cara nyembunyikan delete 2
+        // if ($post->ownBy(auth()->user())) {
+        //     dd("No, it is not yours");
+        // }
+
+        // lanjutan cara nyembunyikan delete 3
+        $this->authorize('delete', $post);
+        $post->delete();
+
+        return back();
+
+    }
 }

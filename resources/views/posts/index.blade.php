@@ -53,7 +53,37 @@
                                 </form>
                                 @endif
                                 @endauth
-                            
+
+                                {{-- cara nyembunyikan tombol delete --}}
+
+                                {{-- 1. gak pakai function --}}
+                                {{-- @if ($post->user_id == auth()->user()->id)
+                                <form action="{{ route('posts.destroy', $post) }}" method="post" class="mr-1">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-blue-500">Delete</button>
+                                </form>
+                                @endif --}}
+
+                                {{-- 2. pakai function --}}
+                                {{-- @if ($post->ownBy(auth()->user()))
+                                <form action="{{ route('posts.destroy', $post) }}" method="post" class="mr-1">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-blue-500">Delete</button>
+                                </form>
+                                @endif --}}
+                                
+                                {{-- 3. pakai policy --}}
+                                @can('delete', $post)
+                                <form action="{{ route('posts.destroy', $post) }}" method="post" class="mr-1">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-blue-500">Delete</button>
+                                </form>
+                                @endcan
+                                
+                                
                                 <span>{{ $post->likes->count() }} {{ Str::plural("like", $post->likes->count()) }}</span>
                                 
 
